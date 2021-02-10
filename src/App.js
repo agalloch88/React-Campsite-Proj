@@ -6,10 +6,10 @@ import './App.css';
 class App extends Component {
   render() {
       return (
-          <BrowserRouter>
-            <div className="App">
-                <Main />
-            </div>
+        <BrowserRouter>
+          <div className="App">
+              <Main />
+          </div>
         </BrowserRouter>
       );
   }
