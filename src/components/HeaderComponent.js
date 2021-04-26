@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron,
+    Button, Modal, ModalHeader, ModalBody,
+    Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
-    
+
     constructor(props) {
         super(props);
 
@@ -36,18 +38,19 @@ class Header extends Component {
     }
 
     render() {
-        return(
+        return (
             <React.Fragment>
                 <Jumbotron fluid>
                     <div className="container">
                         <div className="row">
                             <div className="col">
-                                <h1>Nucamp</h1>
+                                <h1>NuCamp</h1>
                                 <h2>a better way to camp</h2>
                             </div>
                         </div>
                     </div>
                 </Jumbotron>
+
                 <Navbar dark sticky="top" expand="md">
                     <div className="container">
                         <NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logo.png" height="30" width="30" alt="NuCamp Logo" /></NavbarBrand>
@@ -90,15 +93,18 @@ class Header extends Component {
                         <Form onSubmit={this.handleLogin}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username" innerRef={input => this.username = input} />
+                                <Input type="text" id="username" name="username"
+                                    innerRef={input => this.username = input} />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
-                                <Input type="password" id="password" name="password" innerRef={input => this.password = input} />
+                                <Input type="password" id="password" name="password"
+                                    innerRef={input => this.password = input} />
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
-                                    <Input type="checkbox" name="remember" innerRef={input => this.remember = input} />
+                                    <Input type="checkbox" name="remember"
+                                        innerRef={input => this.remember = input} />
                                     Remember me
                                 </Label>
                             </FormGroup>
@@ -106,6 +112,7 @@ class Header extends Component {
                         </Form>
                     </ModalBody>
                 </Modal>
+
             </React.Fragment>
         );
     }

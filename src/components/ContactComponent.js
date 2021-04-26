@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, Label,  Col, Row } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem,
+    Button, Label, Col, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 
-const required = val => val  && val.length;
+const required = val => val && val.length;
 const maxLength = len => val => !val || (val.length <= len);
 const minLength = len => val => val && (val.length >= len);
 const isNumber = val => !isNaN(+val);
 const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 class Contact extends Component {
-    
+
     constructor(props) {
         super(props);
 
@@ -34,12 +35,12 @@ class Contact extends Component {
     }
 
     handleSubmit(values) {
-        console.log("Current state is: " + JSON.stringify(values));
-        alert("Current state is: " + JSON.stringify(values));
+        
+        this.props.postFeedback(values);
         this.props.resetFeedbackForm();
     }
-    
-    render () {
+
+    render() {
 
         return (
             <div className="container">
@@ -96,7 +97,7 @@ class Contact extends Component {
                                         messages={{
                                             required: 'Required',
                                             minLength: 'Must be at least 2 characters',
-                                            maxLength: 'Must be 15 charcters or less'
+                                            maxLength: 'Must be 15 characters or less'
                                         }}
                                     />
                                 </Col>
@@ -108,7 +109,7 @@ class Contact extends Component {
                                         placeholder="Last Name"
                                         className="form-control"
                                         validators={{
-                                            required, 
+                                            required,
                                             minLength: minLength(2),
                                             maxLength: maxLength(15)
                                         }}
@@ -121,7 +122,7 @@ class Contact extends Component {
                                         messages={{
                                             required: 'Required',
                                             minLength: 'Must be at least 2 characters',
-                                            maxLength: 'Must be 15 charcters or less'
+                                            maxLength: 'Must be 15 characters or less'
                                         }}
                                     />
                                 </Col>
@@ -133,7 +134,7 @@ class Contact extends Component {
                                         placeholder="Phone number"
                                         className="form-control"
                                         validators={{
-                                            required, 
+                                            required,
                                             minLength: minLength(10),
                                             maxLength: maxLength(15),
                                             isNumber
@@ -160,7 +161,7 @@ class Contact extends Component {
                                         placeholder="Email"
                                         className="form-control"
                                         validators={{
-                                            required, 
+                                            required,
                                             validEmail
                                         }}
                                     />
@@ -190,9 +191,7 @@ class Contact extends Component {
                                     </div>
                                 </Col>
                                 <Col md={4}>
-                                    <Control.select 
-                                        model=".contactType" 
-                                        name="contactType" 
+                                    <Control.select model=".contactType" name="contactType"
                                         className="form-control">
                                         <option>By Phone</option>
                                         <option>By Email</option>
